@@ -1,6 +1,6 @@
 # AutoVenv by PasPerfection
 
-![AutoVenv Logo](images/autovenv-icon.jpg)
+![AutoVenv Logo](https://raw.githubusercontent.com/gebruikersnaam/repo-naam/main/images/autovenv-icon.jpg)
 
 ## Automatische Python Virtuele Omgeving voor VS Code
 
@@ -27,13 +27,13 @@ AutoVenv is een krachtige VS Code-extensie die het beheer van Python virtuele om
 
 ### Extensie Menu
 
-(Coming Soon) Hier is hoe het AutoVenv menu eruit ziet in VS Code:
+Hier is hoe het AutoVenv menu eruit ziet in VS Code:
 
-![AutoVenv Menu](images/autovenv-menu.png)
+![AutoVenv Menu](https://raw.githubusercontent.com/PasPerfection/AutoVenv/main/images/autovenv-menu.png)
 
 ## Bijdragen
 
-Voel je vrij om bij te dragen aan dit project! Open een issue of stuur een pull request op onze [GitHub repository](https://github.com/PasPerfection/autovenv).
+Voel je vrij om bij te dragen aan dit project! Open een issue of stuur een pull request op onze [GitHub repository](https://github.com/yourusername/autovenv).
 
 ## Licentie
 
