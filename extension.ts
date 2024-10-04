@@ -94,7 +94,7 @@ async function checkAndInstallImports(workspaceFolder: string) {
         ? path.join(venvPath, 'Scripts', 'pip.exe')
         : path.join(venvPath, 'bin', 'pip');
 
-    for (const importName of imports) {
+    for (const importName of Array.from(imports)) {
         try {
             child_process.execSync(`${pipPath} show ${importName}`, { stdio: 'ignore' });
         } catch (error) {
