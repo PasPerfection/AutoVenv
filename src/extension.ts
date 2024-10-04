@@ -10,14 +10,21 @@ export function activate(context: vscode.ExtensionContext) {
     // Registreer de commando's
     let createVenvDisposable = vscode.commands.registerCommand('autovenv.createVenv', createVirtualEnvironment);
     let activateVenvDisposable = vscode.commands.registerCommand('autovenv.activateVenv', activateVirtualEnvironment);
+    let checkImportsDisposable = vscode.commands.registerCommand('autovenv.checkImports', () => {
+        if (vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders.length > 0) {
+            const workspaceFolder = vscode.workspace.workspaceFolders[0].uri.fsPath;
+            checkAndInstallImports(workspaceFolder);
+        }
+    });
 
-    context.subscriptions.push(createVenvDisposable, activateVenvDisposable);
+    context.subscriptions.push(createVenvDisposable, activateVenvDisposable, checkImportsDisposable);
 
     // Automatisch aanmaken en activeren van de virtuele omgeving bij het openen van een project
     if (vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders.length > 0) {
         const workspaceFolder = vscode.workspace.workspaceFolders[0].uri.fsPath;
         createVirtualEnvironment(workspaceFolder);
         activateVirtualEnvironment(workspaceFolder);
+        checkAndInstallImports(workspaceFolder);
     }
 }
 
@@ -63,3 +70,40 @@ function activateVirtualEnvironment(workspaceFolder: string) {
 
 // Functie om de extensie te deactiveren
 export function deactivate() {}
+
+// Nieuwe functie om imports te controleren en installeren
+async function checkAndInstallImports(workspaceFolder: string) {
+    const pythonFiles = await vscode.workspace.findFiles('**/*.py');
+    const imports = new Set<string>();
+
+    for (const file of pythonFiles) {
+        const content = await vscode.workspace.fs.readFile(file);
+        const lines = content.toString().split('\n');
+        for (const line of lines) {
+            if (line.startsWith('import ') || line.startsWith('from ')) {
+                const match = line.match(/^(?:from|import)\s+(\S+)/);
+                if (match) {
+                    imports.add(match[1].split('.')[0]);
+                }
+            }
+        }
+    }
+
+    const venvPath = path.join(workspaceFolder, '.venv');
+    const pipPath = process.platform === 'win32'
+        ? path.join(venvPath, 'Scripts', 'pip.exe')
+        : path.join(venvPath, 'bin', 'pip');
+
+    for (const importName of Array.from(imports)) {
+        try {
+            child_process.execSync(`${pipPath} show ${importName}`, { stdio: 'ignore' });
+        } catch (error) {
+            try {
+                child_process.execSync(`${pipPath} install ${importName}`, { cwd: workspaceFolder });
+                vscode.window.showInformationMessage(`Geïnstalleerd: ${importName}`);
+            } catch (installError) {
+                vscode.window.showErrorMessage(`Fout bij installeren van ${importName}`);
+            }
+        }
+    }
+}
