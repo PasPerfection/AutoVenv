@@ -1,8 +1,19 @@
 {
-  "name": "AutoVenv",
+  "name": "autovenv",
   "publisher": "PasPerfection",
   "version": "0.1.0",
+  "displayName": "AutoVenv",
+  "description": "Automatically activate a Python virtual environment based on the current directory.",
+  "repository": "https://github.com/PasPerfection/AutoVenv",
+  "homepage": "https://github.com/PasPerfection/AutoVenv",
+  "license": "MIT",
+  "author": {
+    "name": "PasPerfection",
+    "email": ""
+  },
   "private": true,
+  "icon": "src/images/autovenv-icon.jpg",
+  "main": "src/extension.ts",
   "dependencies": {
     "@types/node": "^18.15.11",
     "@types/react-dom": "^18.0.11",
