@@ -18,6 +18,7 @@ Deze vscode-extensie creëert automatisch een virtuele omgeving voor het project
 # Toekomstig werk
 
 - [ ] Voeg een opdracht toe aan de extensie
+- [ ] Voeg een manier toe om nodige imports automatisch te installeren
 
 ---
 # AutoVenv (english version) 
@@ -41,6 +42,7 @@ This vscode extension automatically creates a virtual environment for the projec
 
 - [ ] Add a command to the extension to manually activate/deactivate the virtual environment.
 - [ ] Add a command to the extension to manually add the virtual environment to the python path.
+- [ ] Add a function that automatically imports the neccesary dependencies
 
 # Contributing
 
