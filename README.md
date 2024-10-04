@@ -1,34 +1,40 @@
-# AutoVenv
+# AutoVenv by PasPerfection
 
-This vscode extension automatically creates a virtual environment for the project. It also adds the virtual environment to the python path and activates the virtual environment by sourcing the virtual environment's bin/activate file in the .venv directory. When the virtual environment is activated, it will be automatically activated when the project is opened in vscode. No manual intervention is required. Happy coding!
+![AutoVenv Logo](images/autovenv-icon.jpg)
 
-## Features
+## Automatische Python Virtuele Omgeving voor VS Code
 
-- Automatically creates a virtual environment for the project.
-- Adds the virtual environment to the python path.
-- Activates the virtual environment by sourcing the virtual environment's bin/activate file in the .venv directory.
-- Automatically activates the virtual environment when the project is opened in vscode.
+AutoVenv is een krachtige VS Code-extensie die het beheer van Python virtuele omgevingen vereenvoudigt. Het creëert en activeert automatisch een virtuele omgeving voor je Python-projecten, en installeert ontbrekende packages.
 
-## Installation
+### Functies
 
-1. Install the extension from the vscode marketplace.
-2. Open a project in vscode.
-3. Activate the extension.
-4. No manual intervention is required. Happy coding!
+- Automatisch aanmaken van een virtuele omgeving bij het openen van een project
+- Automatische activatie van de virtuele omgeving
+- Detectie en installatie van ontbrekende imports
+- Eenvoudige commando's voor handmatig beheer van de virtuele omgeving
 
-# Future Work
+### Hoe te gebruiken
 
-- [ ] Add a command to the extension to manually activate/deactivate the virtual environment.
-- [ ] Add a command to the extension to manually add the virtual environment to the python path.
+1. Open je Python-project in VS Code
+2. De extensie maakt automatisch een `.venv` map aan en activeert deze
+3. Begin met coderen! AutoVenv zorgt voor de rest
 
-# Contributing
+### Commando's
 
-1. Fork the repository.
-2. Create a new branch.
-3. Make the changes.
-4. Create a pull request.
+- `AutoVenv: Create Venv`: Maak handmatig een virtuele omgeving aan
+- `AutoVenv: Activate Venv`: Activeer handmatig de virtuele omgeving
+- `AutoVenv: Check Imports`: Controleer en installeer ontbrekende imports
 
-# License
+### Extensie Menu
 
-This project is licensed under the MIT License. See the LICENSE file for more details.
+(Coming Soon) Hier is hoe het AutoVenv menu eruit ziet in VS Code:
 
+![AutoVenv Menu](images/autovenv-menu.png)
+
+## Bijdragen
+
+Voel je vrij om bij te dragen aan dit project! Open een issue of stuur een pull request op onze [GitHub repository](https://github.com/PasPerfection/autovenv).
+
+## Licentie
+
+Dit project is gelicenseerd onder de MIT-licentie. Zie het [LICENSE](LICENSE) bestand voor details.
